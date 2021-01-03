@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "mobdestructor:block/mob_destructor" }
+  }
+}
