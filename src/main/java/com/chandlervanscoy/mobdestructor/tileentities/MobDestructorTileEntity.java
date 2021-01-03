@@ -2,6 +2,8 @@ package com.chandlervanscoy.mobdestructor.tileentities;
 
 import com.chandlervanscoy.mobdestructor.MobDestructor;
 import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.boss.dragon.EnderDragonEntity;
+import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.DamageSource;
@@ -31,8 +33,10 @@ public class MobDestructorTileEntity extends TileEntity implements ITickableTile
             int y2 = this.pos.getY() + 5;
             int z2 = this.pos.getZ() + 5;
 
-            List<? extends MobEntity> mobs = this.world.getEntitiesWithinAABB(MobEntity.class, new AxisAlignedBB(x1, y1, z1, x2, y2, z2));
+            List<? extends MonsterEntity> mobs = this.world.getEntitiesWithinAABB(MonsterEntity.class, new AxisAlignedBB(x1, y1, z1, x2, y2, z2));
             for (MobEntity entity : mobs) {
+                if(entity instanceof EnderDragonEntity)
+                    continue;
                 entity.attackEntityFrom(DamageSource.GENERIC, 9999);
             }
 
